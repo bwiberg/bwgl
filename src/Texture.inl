@@ -54,3 +54,7 @@ inline void bwgl::Texture::parameter(GLenum pname, const GLfloat *params) {
 inline void bwgl::Texture::parameter(GLenum pname, const GLint *params) {
     glTexParameteriv(GL_TEXTURE_2D, pname, params);
 }
+
+inline GLuint bwgl::Texture::ID() const {
+    return mID;
+}

@@ -32,6 +32,8 @@ namespace bwgl {
 
         void parameter(GLenum pname, const GLint *params);
 
+        GLuint ID() const;
+
 
     private:
         GLuint mID;

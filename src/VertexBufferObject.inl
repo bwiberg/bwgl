@@ -22,3 +22,7 @@ inline void bwgl::VertexBufferObject::unbind() {
 inline void bwgl::VertexBufferObject::bufferData(GLsizeiptr size, const GLvoid *data, GLenum usage) {
     glBufferData(mMode, size, data, usage);
 }
+
+inline GLuint bwgl::VertexBufferObject::ID() const {
+    return mID;
+}
