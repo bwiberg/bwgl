@@ -1,13 +1,14 @@
-inline bwgl::Texture::Texture() {
-    glGenTextures(1, &id_);
+inline bwgl::Texture::Texture(GLenum target, GLenum pixelFormat, GLenum dataType)
+        : mTarget(target), mPixelFormat(pixelFormat), mDataType(dataType) {
+    glGenTextures(1, &mID);
 }
 
 inline bwgl::Texture::~Texture() {
-    glDeleteTextures(1, &id_);
+    glDeleteTextures(1, &mID);
 }
 
 inline void bwgl::Texture::bind() {
-    glBindTexture(GL_TEXTURE_2D, id_);
+    glBindTexture(GL_TEXTURE_2D, mID);
 }
 
 inline void bwgl::Texture::unbind() {
@@ -20,9 +21,9 @@ inline void bwgl::Texture::unbind() {
 inline void bwgl::Texture::loadImage2D(GLint internalFormat,
                                        GLsizei width, GLsizei height,
                                        const GLvoid *data) {
-    glTexImage2D(target_, 0, internalFormat,
+    glTexImage2D(mTarget, 0, internalFormat,
                  width, height, 0,
-                 pixelFormat_, dataType_,
+                 mPixelFormat, mDataType,
                  data);
 
     glGenerateMipmap(GL_TEXTURE_2D);
@@ -32,9 +33,9 @@ inline void bwgl::Texture::loadImage2D(GLint internalFormat,
                                        GLsizei width, GLsizei height,
                                        const GLvoid *data,
                                        GLint mipmapLevel) {
-    glTexImage2D(target_, mipmapLevel, internalFormat,
+    glTexImage2D(mTarget, mipmapLevel, internalFormat,
                  width, height, 0,
-                 pixelFormat_, dataType_,
+                 mPixelFormat, mDataType,
                  data);
 }
 

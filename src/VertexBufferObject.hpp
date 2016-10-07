@@ -7,7 +7,7 @@ namespace bwgl {
     /// @author benjamin
     class VertexBufferObject {
     public:
-        VertexBufferObject(GLenum mode, GLenum usage = GL_STATIC_DRAW);
+        VertexBufferObject(GLenum target, GLenum usage = GL_STATIC_DRAW);
 
         ~VertexBufferObject();
 
@@ -15,12 +15,12 @@ namespace bwgl {
 
         void unbind();
 
-        void bufferData(GLsizeiptr size, const GLvoid *data, GLenum usage = usage_);
+        void bufferData(GLsizeiptr size, const GLvoid *data, GLenum usage = mUsage);
 
     private:
-        GLuint id_;
+        GLuint mID;
 
-        GLenum mode_, usage_;
+        GLenum mTarget, mUsage;
 
     };
 }

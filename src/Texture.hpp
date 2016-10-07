@@ -34,13 +34,13 @@ namespace bwgl {
 
 
     private:
-        GLuint id_;
+        GLuint mID;
 
-        GLenum target_;
+        GLenum mTarget;
 
-        GLenum pixelFormat_;
+        GLenum mPixelFormat;
 
-        GLenum dataType_;
+        GLenum mDataType;
     };
 }
 
