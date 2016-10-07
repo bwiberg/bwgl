@@ -10,4 +10,4 @@
 
 #pragma once
 
-#include <VertexBufferObject.hpp>
+#include <VertexBuffer.hpp>

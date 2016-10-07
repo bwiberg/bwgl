@@ -5,11 +5,11 @@
 namespace bwgl {
     /// @brief //todo add brief description to VertexBufferObject
     /// @author benjamin
-    class VertexBufferObject {
+    class VertexBuffer {
     public:
-        VertexBufferObject(GLenum target, GLenum usage = GL_STATIC_DRAW);
+        VertexBuffer(GLenum target, GLenum usage = GL_STATIC_DRAW);
 
-        ~VertexBufferObject();
+        ~VertexBuffer();
 
         void bind();
 
@@ -27,4 +27,4 @@ namespace bwgl {
     };
 }
 
-#include "VertexBufferObject.inl"
+#include "VertexBuffer.inl"
