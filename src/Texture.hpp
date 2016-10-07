@@ -24,6 +24,15 @@ namespace bwgl {
                          const GLvoid *data,
                          GLint mipmapLevel);
 
+        void parameter(GLenum pname, GLfloat param);
+
+        void parameter(GLenum pname, GLint param);
+
+        void parameter(GLenum pname, const GLfloat *params);
+
+        void parameter(GLenum pname, const GLint *params);
+
+
     private:
         GLuint id_;
 

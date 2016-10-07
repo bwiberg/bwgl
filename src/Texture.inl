@@ -37,3 +37,19 @@ inline void bwgl::Texture::loadImage2D(GLint internalFormat,
                  pixelFormat_, dataType_,
                  data);
 }
+
+inline void bwgl::Texture::parameter(GLenum pname, GLfloat param) {
+    glTexParameterf(GL_TEXTURE_2D, pname, param);
+}
+
+inline void bwgl::Texture::parameter(GLenum pname, GLint param) {
+    glTexParameteri(GL_TEXTURE_2D, pname, param);
+}
+
+inline void bwgl::Texture::parameter(GLenum pname, const GLfloat *params) {
+    glTexParameterfv(GL_TEXTURE_2D, pname, params);
+}
+
+inline void bwgl::Texture::parameter(GLenum pname, const GLint *params) {
+    glTexParameteriv(GL_TEXTURE_2D, pname, params);
+}
