@@ -15,3 +15,4 @@
 #include "../../src/RenderBuffer.hpp"
 #include "../../src/FrameBuffer.hpp"
 #include "../../src/Texture.hpp"
+#include "../../src/Shader.hpp"
