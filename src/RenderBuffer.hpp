@@ -1,6 +1,6 @@
 #pragma once
 
-#include OPENGL_HEADER
+#include <gl3.h>
 
 namespace bwgl {
     /// @brief //todo add brief description to RenderBuffer

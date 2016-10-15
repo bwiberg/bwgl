@@ -10,4 +10,8 @@
 
 #pragma once
 
-#include <VertexBuffer.hpp>
+#include <../../src/VertexArray.hpp>
+#include <../../src/VertexBuffer.hpp>
+#include <../../src/RenderBuffer.hpp>
+#include <../../src/FrameBuffer.hpp>
+#include <../../src/Texture.hpp>

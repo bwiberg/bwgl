@@ -1,6 +1,6 @@
 #pragma once
 
-#include OPENGL_HEADER
+#include <gl3.h>
 
 #include "VertexBuffer.hpp"
 
