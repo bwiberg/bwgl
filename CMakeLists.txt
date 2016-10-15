@@ -31,3 +31,8 @@ else (BWGL_STATIC_BUILD)
 endif (BWGL_STATIC_BUILD)
 
 target_link_libraries(bwgl ${OPENGL_LIBRARIES})
+
+##### Export include directory to parent scope ####
+
+##### Export include directory to parent scope ####
+set(BWGL_EXTRA_INCLUDE_DIRS ${OPENGL_INCLUDE_DIR} PARENT_SCOPE)
