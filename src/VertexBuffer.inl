@@ -1,5 +1,3 @@
-#include "VertexBuffer.hpp"
-
 namespace bwgl {
     inline VertexBuffer::VertexBuffer(GLenum target, GLenum usage)
             : mTarget(target), mUsage(usage) {
@@ -11,7 +9,7 @@ namespace bwgl {
     }
 
     inline void VertexBuffer::bind() {
-        glBindBuffer(mMode, mID);
+        glBindBuffer(mTarget, mID);
     }
 
     inline void VertexBuffer::unbind() {
@@ -20,8 +18,12 @@ namespace bwgl {
 #endif
     }
 
+    inline void VertexBuffer::bufferData(GLsizeiptr size, const GLvoid *data) {
+        this->bufferData(size, data, mUsage);
+    }
+
     inline void VertexBuffer::bufferData(GLsizeiptr size, const GLvoid *data, GLenum usage) {
-        glBufferData(mMode, size, data, usage);
+        glBufferData(mTarget, size, data, usage);
     }
 
     inline GLuint VertexBuffer::ID() const {

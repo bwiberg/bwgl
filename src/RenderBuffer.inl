@@ -4,7 +4,7 @@ namespace bwgl {
     }
 
     inline RenderBuffer::~RenderBuffer() {
-        glDeleteRenderbuffers(1, mID);
+        glDeleteRenderbuffers(1, &mID);
     }
 
     inline void RenderBuffer::bind() {

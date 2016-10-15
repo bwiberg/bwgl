@@ -18,7 +18,7 @@ namespace bwgl {
 #endif
     }
 
-    inline void FrameBuffer::generate(GLint internalFormat,
+    inline void FrameBuffer::generateTexture(GLint internalFormat,
                                      GLsizei width, GLsizei height) {
         /* Color */
 

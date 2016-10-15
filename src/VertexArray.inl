@@ -5,7 +5,7 @@ namespace bwgl {
     }
 
     inline VertexArray::~VertexArray() {
-        glDeleteVertexArrays(1, mID);
+        glDeleteVertexArrays(1, &mID);
     }
 
     inline void VertexArray::bind() {

@@ -15,7 +15,9 @@ namespace bwgl {
 
         void unbind();
 
-        void bufferData(GLsizeiptr size, const GLvoid *data, GLenum usage = mUsage);
+        void bufferData(GLsizeiptr size, const GLvoid *data);
+
+        void bufferData(GLsizeiptr size, const GLvoid *data, GLenum usage);
 
         GLuint ID() const;
 
