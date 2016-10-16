@@ -16,3 +16,4 @@
 #include "../../src/FrameBuffer.hpp"
 #include "../../src/Texture.hpp"
 #include "../../src/Shader.hpp"
+#include "../../src/FileReader.hpp"
