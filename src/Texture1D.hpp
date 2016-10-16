@@ -3,23 +3,21 @@
 #include <gl3.h>
 
 namespace bwgl {
-    /// @brief //todo add brief description to Texture2D
-    /// @author benjamin
-    class Texture2D {
+    class Texture1D {
     public:
-        Texture2D(GLenum target, GLenum pixelFormat, GLenum dataType);
+        Texture1D(GLenum target, GLenum pixelFormat, GLenum dataType);
 
-        ~Texture2D();
+        ~Texture1D();
 
         void bind();
 
         void unbind();
 
-        void loadImage2D(GLint internalFormat,
+        void loadImage1D(GLint internalFormat,
                          GLsizei width, GLsizei height,
                          const GLvoid *data);
 
-        void loadImage2D(GLint internalFormat,
+        void loadImage1D(GLint internalFormat,
                          GLsizei width, GLsizei height,
                          const GLvoid *data,
                          GLint mipmapLevel);
@@ -45,5 +43,3 @@ namespace bwgl {
         GLenum mDataType;
     };
 }
-
-#include "Texture2D.inl"
