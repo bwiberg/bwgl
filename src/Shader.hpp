@@ -57,7 +57,15 @@ namespace bwgl {
              */
             Shader build();
 
+            /**
+             * Builds shader stages, attaches them to a shader program and links it together.
+             * @return Pointer to the shader program
+             */
+            Shader *buildDynamic();
+
         private:
+            GLuint internalBuild();
+
             std::unordered_map<GLuint, std::string> mShaderStages;
 
             Builder() {}

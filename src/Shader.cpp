@@ -30,6 +30,14 @@ namespace bwgl {
     }
 
     Shader Shader::Builder::build() {
+        return Shader(internalBuild());
+    }
+
+    Shader *Shader::Builder::buildDynamic() {
+        return new Shader(internalBuild());
+    }
+
+    GLuint Shader::Builder::internalBuild() {
         typedef std::pair<GLuint, std::string> ShaderStage;
 
         GLuint programID = glCreateProgram();
@@ -44,7 +52,7 @@ namespace bwgl {
                 shaderStageSource = "";
             } else {
                 std::cerr << "Failed to load shader '" << stage.second << "'" << std::endl;
-                return Shader(0);
+                return 0;
             }
         }
 
@@ -59,10 +67,10 @@ namespace bwgl {
             glGetShaderInfoLog(programID, length, &length, &log[0]);
             std::cerr << "Failed to link shaderprogram : " << std::endl
                       << log << std::endl;
-            return Shader(0);
+            return 0;
         }
 
-        return Shader(programID);
+        return programID;
     }
 
     bool Shader::Builder::TryCompileShaderStage(GLuint type, GLchar const *source, GLuint &shaderStageID) {
