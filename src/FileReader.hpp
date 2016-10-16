@@ -6,7 +6,7 @@ namespace bwgl {
     bool TryReadFromFile(std::string filename, std::string &out);
 }
 
-bool bwgl::TryReadFromFile(std::string filename, std::string &out) {
+inline bool bwgl::TryReadFromFile(std::string filename, std::string &out) {
     std::ifstream ifs(filename.c_str());
 
     if (ifs.is_open()) {
