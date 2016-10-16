@@ -16,11 +16,11 @@ namespace bwgl {
         void unbind();
 
         void loadImage3D(GLint internalFormat,
-                         GLsizei width, GLsizei height,
+                         GLsizei width, GLsizei height, GLsizei depth,
                          const GLvoid *data);
 
         void loadImage3D(GLint internalFormat,
-                         GLsizei width, GLsizei height,
+                         GLsizei width, GLsizei height, GLsizei depth,
                          const GLvoid *data,
                          GLint mipmapLevel);
 
