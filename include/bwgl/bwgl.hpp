@@ -19,3 +19,5 @@
 #include "../../src/Texture1D.hpp"
 #include "../../src/Shader.hpp"
 #include "../../src/FileReader.hpp"
+
+#include "../../src/util/OGL_CALL.h"
