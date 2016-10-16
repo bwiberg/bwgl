@@ -20,10 +20,10 @@ namespace bwgl {
 
 
     inline void Texture1D::loadImage1D(GLint internalFormat,
-                                       GLsizei width, GLsizei height,
+                                       GLsizei width,
                                        const GLvoid *data) {
         glTexImage1D(mTarget, 0, internalFormat,
-                     width, height, 0,
+                     width, 0,
                      mPixelFormat, mDataType,
                      data);
 
@@ -31,11 +31,11 @@ namespace bwgl {
     }
 
     inline void Texture1D::loadImage1D(GLint internalFormat,
-                                       GLsizei width, GLsizei height,
+                                       GLsizei width,
                                        const GLvoid *data,
                                        GLint mipmapLevel) {
         glTexImage1D(mTarget, mipmapLevel, internalFormat,
-                     width, height, 0,
+                     width, 0,
                      mPixelFormat, mDataType,
                      data);
     }
