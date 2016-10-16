@@ -1,3 +1,5 @@
+#pragma once
+
 #include <gl3.h>
 #include <iostream>
 
