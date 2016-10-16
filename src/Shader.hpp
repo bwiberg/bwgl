@@ -15,6 +15,7 @@ namespace bwgl {
          */
         class Builder {
             friend class Shader;
+
         public:
             /**
              * Add a vertex shader stage to the program.

@@ -18,6 +18,7 @@ namespace bwgl {
         void generateStorage(GLenum internalFormat, GLsizei width, GLsizei height);
 
         GLuint ID() const;
+
     private:
         GLuint mID;
     };

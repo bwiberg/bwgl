@@ -1,20 +1,22 @@
+#include "util/OGL_CALL.h"
+
 namespace bwgl {
     inline VertexArray::VertexArray()
             : mVertexAttributeCount(0) {
-        glGenVertexArrays(1, &mID);
+        OGL_CALL(glGenVertexArrays(1, &mID));
     }
 
     inline VertexArray::~VertexArray() {
-        glDeleteVertexArrays(1, &mID);
+        OGL_CALL(glDeleteVertexArrays(1, &mID));
     }
 
     inline void VertexArray::bind() {
-        glBindVertexArray(mID);
+        OGL_CALL(glBindVertexArray(mID));
     }
 
     inline void VertexArray::unbind() {
 #if ENABLE_GL_UNBIND
-        glBindVertexArray(0);
+        OGL_CALL(glBindVertexArray(0));
 #endif
     }
 
@@ -24,13 +26,13 @@ namespace bwgl {
                                                 GLboolean normalized,
                                                 GLsizei stride) {
         vertexBuffer.bind();
-        glVertexAttribPointer(mVertexAttributeCount,
-                              size,
-                              type,
-                              normalized,
-                              stride,
-                              (void *) 0);
-        glEnableVertexAttribArray(mVertexAttributeCount);
+        OGL_CALL(glVertexAttribPointer(mVertexAttributeCount,
+                                       size,
+                                       type,
+                                       normalized,
+                                       stride,
+                                       (void *) 0));
+        OGL_CALL(glEnableVertexAttribArray(mVertexAttributeCount));
         vertexBuffer.unbind();
 
         ++mVertexAttributeCount;
