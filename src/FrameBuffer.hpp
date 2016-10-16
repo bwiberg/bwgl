@@ -2,7 +2,7 @@
 
 #include <gl3.h>
 
-#include "Texture.hpp"
+#include "Texture2D.hpp"
 #include "RenderBuffer.hpp"
 
 namespace bwgl {
@@ -25,7 +25,7 @@ namespace bwgl {
     private:
         GLuint mID;
 
-        Texture mTexture;
+        Texture2D mTexture;
 
         RenderBuffer mDepthBuffer;
     };

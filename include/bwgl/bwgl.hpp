@@ -14,6 +14,6 @@
 #include "../../src/VertexBuffer.hpp"
 #include "../../src/RenderBuffer.hpp"
 #include "../../src/FrameBuffer.hpp"
-#include "../../src/Texture.hpp"
+#include "Texture2D.hpp"
 #include "../../src/Shader.hpp"
 #include "../../src/FileReader.hpp"

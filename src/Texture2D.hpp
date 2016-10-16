@@ -5,11 +5,11 @@
 namespace bwgl {
     /// @brief //todo add brief description to Texture
     /// @author benjamin
-    class Texture {
+    class Texture2D {
     public:
-        Texture(GLenum target, GLenum pixelFormat, GLenum dataType);
+        Texture2D(GLenum target, GLenum pixelFormat, GLenum dataType);
 
-        ~Texture();
+        ~Texture2D();
 
         void bind();
 
@@ -46,4 +46,4 @@ namespace bwgl {
     };
 }
 
-#include "Texture.inl"
+#include "Texture2D.inl"
