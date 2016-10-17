@@ -17,7 +17,7 @@ namespace bwgl {
 
         void unbind();
 
-        void addVertexAttribute(VertexBuffer vertexBuffer,
+        void addVertexAttribute(VertexBuffer &vertexBuffer,
                                 GLint size,
                                 GLenum type,
                                 GLboolean normalized,

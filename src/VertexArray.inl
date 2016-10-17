@@ -20,7 +20,7 @@ namespace bwgl {
 #endif
     }
 
-    inline void VertexArray::addVertexAttribute(VertexBuffer vertexBuffer,
+    inline void VertexArray::addVertexAttribute(VertexBuffer &vertexBuffer,
                                                 GLint size,
                                                 GLenum type,
                                                 GLboolean normalized,
