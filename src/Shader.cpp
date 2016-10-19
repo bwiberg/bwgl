@@ -1,51 +1,20 @@
 #include "Shader.hpp"
 
 #include "util/OGL_CALL.h"
-#include <iostream>
 #include "FileReader.hpp"
 
 namespace bwgl {
-    Shader::Builder &Shader::Builder::vertex(std::string filename) {
-        mShaderStages.insert(std::make_pair(GL_VERTEX_SHADER, filename));
-        return *this;
-    }
+    Shader::Shader(std::unordered_map<GLuint, std::string> stages)
+            : mStages(stages) {}
 
-    Shader::Builder &Shader::Builder::tessControl(std::string filename) {
-        mShaderStages.insert(std::make_pair(GL_TESS_CONTROL_SHADER, filename));
-        return *this;
-    }
-
-    Shader::Builder &Shader::Builder::tessEvaluation(std::string filename) {
-        mShaderStages.insert(std::make_pair(GL_TESS_EVALUATION_SHADER, filename));
-        return *this;
-    }
-
-    Shader::Builder &Shader::Builder::geometry(std::string filename) {
-        mShaderStages.insert(std::make_pair(GL_GEOMETRY_SHADER, filename));
-        return *this;
-    }
-
-    Shader::Builder &Shader::Builder::fragment(std::string filename) {
-        mShaderStages.insert(std::make_pair(GL_FRAGMENT_SHADER, filename));
-        return *this;
-    }
-
-    Shader Shader::Builder::build() {
-        return Shader(internalBuild());
-    }
-
-    Shader *Shader::Builder::buildDynamic() {
-        return new Shader(internalBuild());
-    }
-
-    GLuint Shader::Builder::internalBuild() {
+    bool Shader::compile() {
         typedef std::pair<GLuint, std::string> ShaderStage;
 
         OGL_CALL(GLuint programID = glCreateProgram());
 
         std::string shaderStageSource = "";
         GLuint shaderStageID;
-        for (ShaderStage stage : mShaderStages) {
+        for (ShaderStage stage : mStages) {
             if (TryReadFromFile(stage.second, shaderStageSource) &&
                 TryCompileShaderStage(stage.first, shaderStageSource.c_str(), shaderStageID)) {
                 OGL_CALL(glAttachShader(programID, shaderStageID));
@@ -53,7 +22,7 @@ namespace bwgl {
                 shaderStageSource = "";
             } else {
                 std::cerr << "Failed to load shader '" << stage.second << "'" << std::endl;
-                return 0;
+                return false;
             }
         }
 
@@ -68,13 +37,16 @@ namespace bwgl {
             OGL_CALL(glGetShaderInfoLog(programID, length, &length, &log[0]));
             std::cerr << "Failed to link shaderprogram : " << std::endl
                       << log << std::endl;
-            return 0;
+            return false;
         }
 
-        return programID;
+        mStages.clear();
+        mID = programID;
+
+        return true;
     }
 
-    bool Shader::Builder::TryCompileShaderStage(GLuint type, GLchar const *source, GLuint &shaderStageID) {
+    bool Shader::TryCompileShaderStage(GLuint type, GLchar const *source, GLuint &shaderStageID) {
         OGL_CALL(shaderStageID = glCreateShader(type));
         OGL_CALL(glShaderSource(shaderStageID, 1, &source, NULL));
         OGL_CALL(glCompileShader(shaderStageID));
@@ -95,14 +67,6 @@ namespace bwgl {
         return true;
     }
 
-    //////////////
-    /// Shader ///
-    //////////////
-
-    Shader::Builder Shader::create() {
-        return Shader::Builder();
-    }
-
     void Shader::use() {
         OGL_CALL(glUseProgram(mID));
     }
@@ -110,10 +74,4 @@ namespace bwgl {
     bool Shader::isValid() {
         return mID != 0;
     }
-
-    GLuint Shader::ID() {
-        return mID;
-    }
-
-    Shader::Shader(GLuint ID) : mID(ID) {}
 }

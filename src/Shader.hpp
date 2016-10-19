@@ -10,75 +10,14 @@ namespace bwgl {
     /// @author Benjamin Wiberg
     class Shader {
     public:
-        /**
-         * Java-inspired Builder pattern to create Shader instances with different combinations of shader stages.
-         */
-        class Builder {
-            friend class Shader;
-
-        public:
-            /**
-             * Add a vertex shader stage to the program.
-             * @param filename The vertex shader's filename 
-             * @return Itself 
-             */
-            Builder &vertex(std::string filename);
-
-            /**
-             * Add a tesselation control shader stage to the program.
-             * @param filename The tesselation control shader's filename 
-             * @return Itself 
-             */
-            Builder &tessControl(std::string filename);
-
-            /**
-             * Add a tesselation evaluation shader stage to the program.
-             * @param filename The tesselation evaluation shader's filename 
-             * @return Itself 
-             */
-            Builder &tessEvaluation(std::string filename);
-
-            /**
-             * Add a geometry shader stage to the program.
-             * @param filename The geometry shader's filename 
-             * @return Itself 
-             */
-            Builder &geometry(std::string filename);
-
-            /**
-             * Add a fragment shader stage to the program.
-             * @param filename The fragment shader's filename 
-             * @return Itself 
-             */
-            Builder &fragment(std::string filename);
-
-            /**
-             * Builds shader stages, attaches them to a shader program and links it together.
-             * @return The shader program
-             */
-            Shader build();
-
-            /**
-             * Builds shader stages, attaches them to a shader program and links it together.
-             * @return Pointer to the shader program
-             */
-            Shader *buildDynamic();
-
-        private:
-            GLuint internalBuild();
-
-            std::unordered_map<GLuint, std::string> mShaderStages;
-
-            Builder() {}
-
-            static bool TryCompileShaderStage(GLuint type, GLchar const *source, GLuint &shaderStageID);
-        };
+        Shader(std::unordered_map<GLuint, std::string> stages);
 
         /**
-         * Create a shader builder that will result in a new shader program.
-         * @return The shader builder
+         * (Tries to) compile the shader. If successful, it should NOT be
+         * called again.
+         * @return Whether compilation/linking was successful
          */
-        static Builder create();
+        bool compile();
 
         /**
          * Use the shader. Equivalent to glUseShader(shader.ID());
@@ -95,11 +34,15 @@ namespace bwgl {
          * Gets the OpenGL ID of the shader.
          * @return The ID
          */
-        GLuint ID();
+        inline GLuint ID() const {
+            return mID;
+        }
 
     private:
-        Shader(GLuint ID);
+        static bool TryCompileShaderStage(GLuint type, GLchar const *source, GLuint &shaderStageID);
 
-        const GLuint mID;
+        std::unordered_map<GLuint, std::string> mStages;
+
+        GLuint mID;
     };
 }
