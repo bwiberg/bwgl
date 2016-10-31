@@ -38,6 +38,11 @@ namespace bwgl {
         ++mVertexAttributeCount;
     }
 
+
+    inline void VertexArray::addElementBuffer(VertexBuffer &elementBuffer) {
+        elementBuffer.bind();
+    }
+
     inline GLuint VertexArray::ID() const {
         return mID;
     }

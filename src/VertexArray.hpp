@@ -23,6 +23,8 @@ namespace bwgl {
                                 GLboolean normalized,
                                 GLsizei stride);
 
+        void addElementBuffer(VertexBuffer &elementBuffer);
+
         GLuint ID() const;
 
     private:
