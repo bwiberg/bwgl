@@ -28,6 +28,10 @@ namespace bwgl {
         OGL_CALL(glBufferData(mTarget, size, data, usage));
     }
 
+    inline void VertexBuffer::bufferSubData(GLintptr offset, GLsizeiptr size, const GLvoid *data) {
+        OGL_CALL(glBufferSubData(mTarget, offset, size, data));
+    }
+
     inline GLuint VertexBuffer::ID() const {
         return mID;
     }

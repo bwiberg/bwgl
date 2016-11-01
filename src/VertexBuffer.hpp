@@ -19,6 +19,8 @@ namespace bwgl {
 
         void bufferData(GLsizeiptr size, const GLvoid *data, GLenum usage);
 
+        void bufferSubData(GLintptr offset, GLsizeiptr size, const GLvoid *data);
+
         GLuint ID() const;
 
     private:
