@@ -40,7 +40,6 @@ namespace bwgl {
             return false;
         }
 
-        mStages.clear();
         mID = programID;
 
         return true;
